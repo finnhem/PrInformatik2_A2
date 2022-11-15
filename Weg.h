@@ -31,6 +31,8 @@ public:
 
 	double getLaenge() const;
 	void vAnnahme(unique_ptr<Fahrzeug>);
+	void vAnnahme(unique_ptr<Fahrzeug>, double);
+
 
 
 private:

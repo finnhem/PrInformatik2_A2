@@ -6,6 +6,7 @@
  */
 
 #include "Weg.h"
+#include "Fahrausnahme.h"
 
 
 Weg::Weg() : Simulationsobjekt(), p_dLaenge(0.0), p_eTempolimit(autobahn)
@@ -32,7 +33,12 @@ void Weg::vSimulieren()
 {
 	for (auto &listElement : p_pFahrzeuge)
 	{
-		listElement->vSimulieren();
+		try {
+			listElement->vSimulieren();
+		}
+		catch (Fahrausnahme& exception){
+			exception.vBearbeiten();
+		}
 	}
 }
 
@@ -49,7 +55,7 @@ void Weg::vKopf()
 			<< setiosflags(ios::left) << setw(30) << "Name"
 			<< setw(3) << " | "
 
-			<< setw(9) << " Laenge"
+			<< setw(9) << "Laenge"
 			<< setw(3) << " | "
 
 			<< setw(21) << "Fahrzeuge" << endl;
@@ -99,3 +105,12 @@ void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg)
 	p_pFahrzeuge.push_back(move(pFzg));
 
 }
+
+
+void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg, double dStartzeit)
+{
+	pFzg->vNeueStrecke(*this, dStartzeit);
+
+	p_pFahrzeuge.push_front(move(pFzg));
+}
+

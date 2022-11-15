@@ -39,6 +39,7 @@ public:
 	virtual void operator=(const Fahrzeug& fahrzeug);
 
 	void vNeueStrecke(Weg&);
+	void vNeueStrecke(Weg&, double);
 
 	double getAbschnittStrecke();
 
@@ -46,9 +47,9 @@ protected:
 	double p_dMaxGeschwindigkeit = 0;
 	double p_dGesamtStrecke = 0;
 	double p_dGesamtFahrZeit = 0;
+	unique_ptr<Verhalten> p_pVerhalten = nullptr;
 
 private:
-	unique_ptr<Verhalten> p_pVerhalten = nullptr;
 	double p_dAbschnittStrecke = 0.0;
 };
 

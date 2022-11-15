@@ -6,6 +6,8 @@
  */
 
 #include "Fahrzeug.h"
+#include "Fahren.h"
+#include "Parken.h"
 
 
 Fahrzeug::Fahrzeug() :
@@ -140,7 +142,14 @@ void Fahrzeug::operator =(const Fahrzeug& fahrzeug)
 
 void Fahrzeug::vNeueStrecke(Weg& weg)
 {
-	p_pVerhalten = make_unique<Verhalten>(weg);
+	p_pVerhalten = make_unique<Fahren>(weg);
+	p_dAbschnittStrecke = 0;
+}
+
+
+void Fahrzeug::vNeueStrecke(Weg& weg, double dStartzeit)
+{
+	p_pVerhalten = make_unique<Parken>(weg, dStartzeit);
 	p_dAbschnittStrecke = 0;
 }
 

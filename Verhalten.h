@@ -10,15 +10,18 @@
 
 class Weg;
 class Fahrzeug;
+extern double dGlobaleZeit;
 
 class Verhalten {
 public:
-	Verhalten(Weg&);
+	Verhalten(Weg& weg);
 	virtual ~Verhalten();
 
-	double dStrecke(Fahrzeug& aFzg, double dZeitIntervall);
+	virtual double dStrecke(Fahrzeug& aFzg, double dZeitIntervall) = 0;
 
-private:
+	Weg& getWeg();
+
+protected:
 	Weg& currentWay;
 };
 

@@ -6,6 +6,7 @@
  */
 
 #include "PKW.h"
+#include "Weg.h"
 
 
 PKW::PKW() : Fahrzeug()
@@ -92,7 +93,8 @@ void PKW::vAusgeben(ostream& o) const
 
 double PKW::dGeschwindigkeit() const
 {
-	return p_dMaxGeschwindigkeit;
+	double dVLimit = p_pVerhalten->getWeg().getTempolimit();
+	return dVLimit;
 }
 
 

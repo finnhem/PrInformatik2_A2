@@ -332,6 +332,27 @@ void vAufgabe_5()
 	}
 }
 
+
+void vAufgabe_6()
+{
+	Weg slowStreet("AStraße", 30, innerorts);
+	Weg fastStreet("Autobahn", 100, autobahn);
+
+	slowStreet.vAnnahme(make_unique<PKW>("BMW", 190, 5, 70), 1);
+	slowStreet.vAnnahme(make_unique<PKW>("Corsa", 130, 5, 70));
+	slowStreet.vAnnahme(make_unique<Fahrrad>("Rose", 28));
+
+	fastStreet.vAnnahme(make_unique<PKW>("Audi", 200, 5, 70));
+	fastStreet.vAnnahme(make_unique<PKW>("Mercedes", 170, 5, 70), 2);
+	fastStreet.vAnnahme(make_unique<Fahrrad>("BMX", 18));
+
+	for (double dTakt = 0.25; dGlobaleZeit < 4.1; dGlobaleZeit += dTakt)
+	{
+		slowStreet.vSimulieren();
+		fastStreet.vSimulieren();
+	}
+}
+
 int main()
 {
 	dGlobaleZeit = 0.0;
@@ -356,6 +377,11 @@ int main()
 
 	//vAufgabe_4();
 
-	vAufgabe_5();
+	//Schlecht implementiert
+	//vAufgabe_5();
+
+
+	vAufgabe_6();
+
 	return 0;
 }

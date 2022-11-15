@@ -16,14 +16,12 @@ Verhalten::Verhalten(Weg& weg) : currentWay(weg)
 
 
 Verhalten::~Verhalten() {
-	cout << "Verhalten wurde dekonstruiert######################" << endl;
 }
 
 
 
-
 double Verhalten::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
-{
+{/*
 	double dMoeglich = aFzg.dGeschwindigkeit()*dZeitIntervall;
 
 	//Weg ist laenger als Strecke im Zeitintervall
@@ -35,5 +33,13 @@ double Verhalten::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
 		return 0;
 	}else {		//sonst Reststrecke
 		return this->currentWay.getLaenge() - aFzg.getAbschnittStrecke();
-	}
+	}*/
+	return 0.0;
 }
+
+
+Weg& Verhalten::getWeg()
+{
+	return currentWay;
+}
+
