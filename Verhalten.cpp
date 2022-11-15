@@ -31,7 +31,7 @@ double Verhalten::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
 	{
 		return dMoeglich;
 	} else if (aFzg.getAbschnittStrecke()==this->currentWay.getLaenge()){
-		cout << "Fahrzeug bereits am Weg ende." << endl;
+		cout << "Fahrzeug #" << aFzg.getID() << " bereits am Weg ende." << endl;
 		return 0;
 	}else {		//sonst Reststrecke
 		return this->currentWay.getLaenge() - aFzg.getAbschnittStrecke();

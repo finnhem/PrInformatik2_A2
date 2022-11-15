@@ -92,9 +92,10 @@ double Weg::getLaenge() const
 
 void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg)
 {
+	//Signal an pFzg neue Strecke
+	pFzg->vNeueStrecke(*this);
+
 	//Fahrzeug zur Liste hinzufuegen
 	p_pFahrzeuge.push_back(move(pFzg));
 
-	//Signal an pFzg neue Strecke
-	pFzg->vNeueStrecke(*this);
 }
