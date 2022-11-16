@@ -19,6 +19,8 @@ public:
 
 
 	void vAusgeben(ostream&) const override;
+
+	void vZeichnen(const Weg&) const override;
 };
 
 #endif /* FAHRRAD_H_ */

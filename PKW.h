@@ -34,6 +34,8 @@ public:
 	double dGeschwindigkeit() const override;
 
 	void operator=(const PKW& pkw);
+
+	void vZeichnen(const Weg&) const override;
 };
 
 #endif /* PKW_H_ */

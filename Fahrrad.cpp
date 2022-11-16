@@ -6,6 +6,7 @@
  */
 
 #include "Fahrrad.h"
+#include "Weg.h"
 
 Fahrrad::Fahrrad() : Fahrzeug()
 {
@@ -56,4 +57,11 @@ void Fahrrad::vAusgeben(ostream& o) const
 					<< setw(3) << " : "
 					<< setw(10) << "-"
 					<< endl;
+}
+
+
+void Fahrrad::vZeichnen(const Weg& weg) const
+{
+	double abschnitt = this->getAbschnittStrecke();
+	bZeichneFahrrad(p_sName, weg.getName(), abschnitt/weg.getLaenge(), dGeschwindigkeit());
 }

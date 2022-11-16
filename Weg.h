@@ -33,7 +33,9 @@ public:
 	void vAnnahme(unique_ptr<Fahrzeug>);
 	void vAnnahme(unique_ptr<Fahrzeug>, double);
 
+	string getName() const;
 
+	unique_ptr<Fahrzeug> pAbgabe(const Fahrzeug&);
 
 private:
 	double p_dLaenge = 0.0;

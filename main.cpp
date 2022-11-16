@@ -14,6 +14,8 @@
 #include <vector>
 #include <cmath>
 
+#include "SimuClient.h"
+
 //Probe test
 #include <iomanip>
 double dEpsilon = 0.001;
@@ -335,21 +337,30 @@ void vAufgabe_5()
 
 void vAufgabe_6()
 {
-	Weg slowStreet("AStraße", 30, innerorts);
-	Weg fastStreet("Autobahn", 100, autobahn);
+	bInitialisiereGrafik(800, 500);		//Ausgabefenster
 
-	slowStreet.vAnnahme(make_unique<PKW>("BMW", 190, 5, 70), 1);
-	slowStreet.vAnnahme(make_unique<PKW>("Corsa", 130, 5, 70));
-	slowStreet.vAnnahme(make_unique<Fahrrad>("Rose", 28));
+	Weg hinWeg("Hinweg", 500, landstraße);
+	Weg rueckWeg("Rueckweg", 500, landstraße);
 
-	fastStreet.vAnnahme(make_unique<PKW>("Audi", 200, 5, 70));
-	fastStreet.vAnnahme(make_unique<PKW>("Mercedes", 170, 5, 70), 2);
-	fastStreet.vAnnahme(make_unique<Fahrrad>("BMX", 18));
+	int iKoordinaten[4] { 700, 250, 100, 250 };
 
-	for (double dTakt = 0.25; dGlobaleZeit < 4.1; dGlobaleZeit += dTakt)
+	bZeichneStrasse(hinWeg.getName(), rueckWeg.getName(), 500, 2, iKoordinaten);
+
+	hinWeg.vAnnahme(make_unique<PKW>("BMW", 190, 5, 70), 1);
+	hinWeg.vAnnahme(make_unique<PKW>("Corsa", 130, 5, 70));
+	hinWeg.vAnnahme(make_unique<Fahrrad>("Rose", 28));
+
+	rueckWeg.vAnnahme(make_unique<PKW>("Audi", 200, 5, 70));
+	rueckWeg.vAnnahme(make_unique<PKW>("Mercedes", 170, 5, 70), 2);
+	rueckWeg.vAnnahme(make_unique<Fahrrad>("BMX", 18));
+
+
+
+	for (double dTakt = 0.25; dGlobaleZeit < 8.1; dGlobaleZeit += dTakt)
 	{
-		slowStreet.vSimulieren();
-		fastStreet.vSimulieren();
+		hinWeg.vSimulieren();
+		rueckWeg.vSimulieren();
+		vSleep(1000);
 	}
 }
 

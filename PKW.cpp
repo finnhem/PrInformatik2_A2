@@ -104,3 +104,10 @@ void PKW::operator=(const PKW& pkw)
 	this->p_dTankvolumen = pkw.p_dTankvolumen;
 	this->p_dVerbrauch = pkw.p_dVerbrauch;
 }
+
+
+void PKW::vZeichnen(const Weg& weg) const
+{
+	double abschnitt = this->getAbschnittStrecke();
+	bZeichnePKW(p_sName, weg.getName(), abschnitt/weg.getLaenge(), dGeschwindigkeit(), p_dTankinhalt);
+}

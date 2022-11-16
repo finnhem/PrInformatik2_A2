@@ -35,6 +35,7 @@ void Weg::vSimulieren()
 	{
 		try {
 			listElement->vSimulieren();
+			listElement->vZeichnen(*this);
 		}
 		catch (Fahrausnahme& exception){
 			exception.vBearbeiten();
@@ -92,7 +93,7 @@ void Weg::vAusgeben(ostream& o) const
 
 double Weg::getLaenge() const
 {
-	return this->p_dLaenge;
+	return p_dLaenge;
 }
 
 
@@ -114,3 +115,28 @@ void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg, double dStartzeit)
 	p_pFahrzeuge.push_front(move(pFzg));
 }
 
+
+
+string Weg::getName() const
+{
+	return p_sName;
+}
+
+
+unique_ptr<Fahrzeug> Weg::pAbgabe(const Fahrzeug& aFzg)
+{
+	unique_ptr<Fahrzeug> pLocalPtr;
+
+	for (auto it = p_pFahrzeuge.begin(); it != p_pFahrzeuge.end(); ++it)
+	{
+		if (*it != nullptr)
+		{
+			if (**it == aFzg)
+			{
+				pLocalPtr = move(*it);
+				p_pFahrzeuge.erase(it);
+				return pLocalPtr;
+			}
+		}
+	}
+}

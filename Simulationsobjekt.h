@@ -12,6 +12,7 @@
 #include <iomanip>
 #include <cmath>
 #include <list>
+#include "SimuClient.h"
 
 using namespace std;
 

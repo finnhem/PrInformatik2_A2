@@ -6,6 +6,7 @@
  */
 
 #include "Losfahren.h"
+#include "Weg.h"
 
 Losfahren::Losfahren(Fahrzeug& f, Weg& w) : Fahrausnahme(f, w)
 {
@@ -22,6 +23,8 @@ void Losfahren::vBearbeiten()
 	cout << fzgException << endl;
 	Weg::vKopf();
 	cout << wayException << endl;
+
+	wayException.vAnnahme(this->fzgException, 0);
 
 	//??????
 	fzgException.vNeueStrecke(wayException);
