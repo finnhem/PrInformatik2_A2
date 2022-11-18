@@ -14,11 +14,11 @@
 class Parken : public Verhalten
 {
 public:
-	Parken(Weg&, double startzeit);
+	Parken(Weg&, double startzeit = 0);
 	virtual ~Parken();
 
 	double dStrecke(Fahrzeug&, double startzeit) override;
-	double getStartzeit();
+	double getStartzeit() const override;
 
 private:
 	double p_dStartzeit;

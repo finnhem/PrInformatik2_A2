@@ -24,5 +24,5 @@ void Streckenende::vBearbeiten()
 	Weg::vKopf();
 	cout << wayException << endl;
 
-
+	wayException.pAbgabe(fzgException);
 }

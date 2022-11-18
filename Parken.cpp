@@ -22,7 +22,7 @@ Parken::~Parken()
 }
 
 
-double Parken::getStartzeit()
+double Parken::getStartzeit() const
 {
 	return this->p_dStartzeit;
 }

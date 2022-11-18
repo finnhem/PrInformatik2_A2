@@ -360,7 +360,7 @@ void vAufgabe_6()
 	{
 		hinWeg.vSimulieren();
 		rueckWeg.vSimulieren();
-		vSleep(1000);
+		vSleep(300);
 	}
 }
 

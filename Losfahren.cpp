@@ -24,8 +24,6 @@ void Losfahren::vBearbeiten()
 	Weg::vKopf();
 	cout << wayException << endl;
 
-	wayException.vAnnahme(this->fzgException, 0);
+	wayException.vAnnahme(wayException.pAbgabe(fzgException));
 
-	//??????
-	fzgException.vNeueStrecke(wayException);
 }

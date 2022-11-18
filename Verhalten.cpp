@@ -43,3 +43,8 @@ Weg& Verhalten::getWeg()
 	return currentWay;
 }
 
+
+double Verhalten::getStartzeit() const
+{
+	return 0.0;
+}

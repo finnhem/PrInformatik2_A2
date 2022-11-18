@@ -18,6 +18,7 @@ public:
 	virtual ~Verhalten();
 
 	virtual double dStrecke(Fahrzeug& aFzg, double dZeitIntervall) = 0;
+	virtual double getStartzeit() const;
 
 	Weg& getWeg();
 
