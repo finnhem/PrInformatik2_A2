@@ -26,7 +26,7 @@ namespace vertagt
 		T p_objekt;
 
 	public:
-	    VPushBack() = default;
+	    //VPushBack() = default;
 		VPushBack(std::list<T>& liste, T obj) : VAktion<T>(liste), p_objekt(std::move(obj))	{}
 		virtual ~VPushBack() = default;
 		void vAusfuehren() override

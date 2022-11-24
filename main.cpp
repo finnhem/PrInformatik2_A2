@@ -374,12 +374,14 @@ void vAufgabe_6a()
 	static std::mt19937 device(0);
 	std::uniform_int_distribution<int> dist(1, 10);
 
-	vertagt::VListe<int> vListe_iTest vertagt::VListe<int>();
+	vertagt::VListe<int> vListe_iTest = vertagt::VListe<int>();
 
 	for (int i = 0; i<10; ++i)
 	{
 		vListe_iTest.push_back(dist(device));
 	}
+
+	vListe_iTest.vPrintList(); //noch implementieren
 }
 
 

@@ -24,7 +24,7 @@ namespace vertagt
 		using const_iterator = typename std::list<T>::const_iterator;
 
 		// Konstruktoren
-		VListe(){} //= default; // Benötigt man einen Standardkonstruktor?
+		VListe() = default; // Benötigt man einen Standardkonstruktor?
 		// Destruktor
 		~VListe()
 		{
@@ -95,7 +95,7 @@ namespace vertagt
 			}
 			// Aktionsliste löschen
 			p_aktionen.clear();
-			}
+
 		}
 	};
 } // namespace vertagt
