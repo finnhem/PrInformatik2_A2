@@ -381,7 +381,30 @@ void vAufgabe_6a()
 		vListe_iTest.push_back(dist(device));
 	}
 
-	vListe_iTest.vPrintList(); //noch implementieren
+	vListe_iTest.vAktualisieren();
+	vListe_iTest.vlAusgeben();
+
+	//Loeschen aller Elemente > 5
+	for (auto it = vListe_iTest.begin(); it != vListe_iTest.end(); ++it)
+	{
+		if ((*it) > 5)
+		{
+			vListe_iTest.erase(it);
+		}
+	}
+
+	//Liste wieder ausgeben
+	vListe_iTest.vlAusgeben();		//gleiche Ausgabe, denn noch nicht aktualisiert
+
+	vListe_iTest.vAktualisieren();
+
+	vListe_iTest.vlAusgeben();		//neue Ausgabe
+
+	//Elemente vorne und hinten einfuegen
+	vListe_iTest.push_front(-1);
+	vListe_iTest.push_back(11);
+	vListe_iTest.vAktualisieren();
+	vListe_iTest.vlAusgeben();
 }
 
 
@@ -414,7 +437,9 @@ int main()
 	//vAufgabe_5();
 
 
-	vAufgabe_6();
+	//vAufgabe_6();
+
+	vAufgabe_6a();
 
 	return 0;
 }

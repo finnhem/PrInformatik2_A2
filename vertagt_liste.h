@@ -32,9 +32,18 @@ namespace vertagt
 			p_objekte.clear();
 		}
 
+		void vlAusgeben()
+		{
+			cout << endl;
+			for (auto& pObjekt : p_objekte)
+			{
+				cout << pObjekt << endl;
+			}
+		}
+
 		void clear()
 		{
-			//vAktualisieren();
+			vAktualisieren();
 			p_objekte.clear();
 		}
 
@@ -73,13 +82,15 @@ namespace vertagt
 		void push_front(T obj)
 		{
 			// Aktionselement für PushBack auf Liste erzeugen
-			p_aktionen.push_front(std::make_unique<VPushFront<T>>(p_objekte, std::move(obj)));
+			std::unique_ptr<VPushFront<T>> VPF_Aktionselement = std::make_unique<VPushFront<T>>(p_objekte, std::move(obj));
+			p_aktionen.push_front(move(VPF_Aktionselement));
 		}
 
 		void erase(iterator it)
 		{
 			// Aktionselement für PushBack auf Liste erzeugen (hier Iterator statt Objekt !)
-			p_aktionen.push_back(std::make_unique<VErase<T>>(p_objekte, it));
+			std::unique_ptr<VErase<T>> VE_Aktionselement = std::make_unique<VErase<T>>(p_objekte, it);
+			p_aktionen.push_back(move(VE_Aktionselement));
 
 			//Erst zu spaeterem Zeitpunkt in vAktualisieren erase anwenden
 		}
