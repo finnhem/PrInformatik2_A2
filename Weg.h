@@ -13,6 +13,9 @@
 #include "Fahrzeug.h"
 
 #include <list>
+
+#include "vertagt_liste.h"
+
 class Fahrzeug;
 
 
@@ -40,7 +43,8 @@ public:
 private:
 	double p_dLaenge = 0.0;
 	Tempolimit p_eTempolimit;
-	list<unique_ptr<Fahrzeug> > p_pFahrzeuge;
+	//list<unique_ptr<Fahrzeug> > p_pFahrzeuge;
+	vertagt::VListe<unique_ptr<Fahrzeug>> p_pFahrzeuge;
 };
 
 #endif /* WEG_H_ */

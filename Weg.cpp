@@ -31,6 +31,7 @@ double Weg::getTempolimit()
 
 void Weg::vSimulieren()
 {
+	p_pFahrzeuge.vAktualisieren();
 	for (auto &listElement : p_pFahrzeuge)
 	{
 		try {
@@ -41,6 +42,7 @@ void Weg::vSimulieren()
 			exception.vBearbeiten();
 		}
 	}
+	p_pFahrzeuge.vAktualisieren();
 }
 
 

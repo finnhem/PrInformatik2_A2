@@ -32,6 +32,15 @@ namespace vertagt
 			p_objekte.clear();
 		}
 
+		void vlAusgeben()
+		{
+			cout << endl;
+			for (auto& pObjekt : p_objekte)
+			{
+				cout << pObjekt << endl;
+			}
+		}
+
 		void clear()
 		{
 			//vAktualisieren();
