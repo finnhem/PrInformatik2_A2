@@ -141,4 +141,5 @@ unique_ptr<Fahrzeug> Weg::pAbgabe(const Fahrzeug& aFzg)
 			}
 		}
 	}
+	return nullptr;
 }

@@ -245,6 +245,7 @@ void vAufgabe_3()
 	vec3.push_back(move(make_unique<PKW>("vA3_PKW1_langsam", 100, 4, 50)));
 	vec3.push_back(move(make_unique<PKW>("vA3_PKW2_schnell", 200, 8, 70)));
 
+	Weg testWeg = Weg("Test", 1000, autobahn);
 
 
 //	cout << "Ausgabe Test" << endl;
@@ -301,7 +302,9 @@ void vAufgabe_3()
 	cout << endl << endl;
 }
 
-//Test fuer Klasse Weg
+
+
+//Test fuer Klasse Weg Ausgabe
 void vAufgabe_4()
 {
 	Weg lousbergstr("Lousbergstr", 0.8, innerorts);
@@ -310,10 +313,10 @@ void vAufgabe_4()
 
 
 
-	for (double dTakt = 0.25; dGlobaleZeit<2.2; dGlobaleZeit += dTakt)
-	{
-		lousbergstr.vSimulieren();
-	}
+//	for (double dTakt = 0.25; dGlobaleZeit<2.2; dGlobaleZeit += dTakt)
+//	{
+//		lousbergstr.vSimulieren();
+//	}
 
 }
 
@@ -407,6 +410,38 @@ void vAufgabe_6a()
 	vListe_iTest.vlAusgeben();
 }
 
+void eTest2()
+{
+	//	vertagt::VListe<int> li;
+	//	for (int i = 0; i < 10; ++i)
+	//	    li.push_back(i);
+	//	li.vAktualisieren();
+	//	for (auto it = li.begin(); it != li.end(); ++it)
+	//	    if (*it % 2 == 1)
+	//	        li.erase(it);
+	//	li.push_back(10);
+	//	li.push_front(-1);
+	//
+	//	li.vAktualisieren();
+	//	li.vlAusgeben();
+
+
+	//	list<int> listT(3, 2);
+	//	    listT.remove(1);
+	//	    listT.erase(listT.begin());
+	//	    for (int i = 0; i < 3; i++)
+	//	    {
+	//	        listT.push_back(i);
+	//	    }
+	//	    listT.pop_back();
+	//	    listT.remove(1);
+	//	    listT.erase(listT.begin());
+	//
+	//	for (auto& n : listT)
+	//	{
+	//		cout << n << endl;
+	//	}
+}
 
 
 int main()
@@ -432,14 +467,17 @@ int main()
 	//vAufgabe_3();
 
 	//vAufgabe_4();
-
+//////////////////////////////////////////////////////////////////////////////////
 	//Schlecht implementiert
 	//vAufgabe_5();
+//////////////////////////////////////////////////////////////////////////////////
 
-
-	//vAufgabe_6();
+	vAufgabe_6();
 
 	vAufgabe_6a();
+
+
+
 
 	return 0;
 }

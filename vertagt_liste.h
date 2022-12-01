@@ -74,24 +74,22 @@ namespace vertagt
 		{
 			// Aktionselement für PushBack auf Liste erzeugen
 			//p_aktionen.push_back(std::make_unique<VPushBack<T>>(p_objekte, std::move(obj)));
-			std::unique_ptr<VPushBack<T>> VPB_Aktionselement = std::make_unique<VPushBack<T>>(p_objekte, std::move(obj));
-			p_aktionen.push_back(move(VPB_Aktionselement));
+			//std::unique_ptr<VPushBack<T>> VPB_Aktionselement = std::make_unique<VPushBack<T>>(p_objekte, std::move(obj));
+			p_aktionen.push_back(std::make_unique<VPushBack<T>>(p_objekte, std::move(obj)));
 
 		}
 
 		void push_front(T obj)
 		{
 			// Aktionselement für PushBack auf Liste erzeugen
-			std::unique_ptr<VPushFront<T>> VPF_Aktionselement = std::make_unique<VPushFront<T>>(p_objekte, std::move(obj));
-			p_aktionen.push_front(move(VPF_Aktionselement));
+			//std::unique_ptr<VPushFront<T>> VPF_Aktionselement = std::make_unique<VPushFront<T>>(p_objekte, std::move(obj));
+			p_aktionen.push_front(std::make_unique<VPushFront<T>>(p_objekte, std::move(obj)));
 		}
 
 		void erase(iterator it)
 		{
 			// Aktionselement für PushBack auf Liste erzeugen (hier Iterator statt Objekt !)
-			std::unique_ptr<VErase<T>> VE_Aktionselement = std::make_unique<VErase<T>>(p_objekte, it);
-			p_aktionen.push_back(move(VE_Aktionselement));
-
+			p_aktionen.push_back(std::make_unique<VErase<T>>(p_objekte, it));
 			//Erst zu spaeterem Zeitpunkt in vAktualisieren erase anwenden
 		}
 

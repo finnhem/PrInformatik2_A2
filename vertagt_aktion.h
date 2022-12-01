@@ -12,7 +12,7 @@ namespace vertagt
 		std::list<T>& p_pListe;  // Zeiger auf Liste der Objekte
 
 	public:
-	    //VAktion() = default; // Benötigt man einen Standardkonstruktor?
+	    VAktion() = delete; // Benötigt man einen Standardkonstruktor?
 		VAktion(std::list<T>& ptListe) : p_pListe(ptListe){}
 		virtual ~VAktion() = default;
 		virtual void vAusfuehren() = 0;
@@ -64,7 +64,7 @@ namespace vertagt
 
 	public:
 		//VErase() = default;
-		VErase(std::list<T> liste, iterator& it) : VAktion<T>(liste), p_it(it) {}
+		VErase(std::list<T>& liste, iterator it) : VAktion<T>(liste), p_it(it) {}
 		virtual ~VErase() = default;
 		void vAusfuehren() override
 		{
