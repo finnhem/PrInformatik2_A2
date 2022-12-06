@@ -21,7 +21,7 @@ extern double dGlobaleZeit;
 
 class Simulationsobjekt {
 private:
-	static inline int p_iMaxID = 0;
+	static inline int p_iMaxID = 0;		//inline Definition in der Klasse (sonst Dateiebene)
 
 protected:
 	string p_sName = "";
@@ -48,7 +48,7 @@ ostream& operator<<(ostream& o, const Simulationsobjekt& simulationsobjekt);
 //damit der Outputstream global fuer Fahrzeuge ueberladen wird.
 
 //Warum reicht die eine Definition fuer alle abgeleiteten Klassen aus?
-//
+//Weil alle Unterklassen von SimObj erben
 
 
 #endif /* SIMULATIONSOBJEKT_H_ */

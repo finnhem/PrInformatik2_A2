@@ -12,7 +12,9 @@ Losfahren::Losfahren(Fahrzeug& f, Weg& w) : Fahrausnahme(f, w)
 {
 }
 
-Losfahren::~Losfahren() {
+
+Losfahren::~Losfahren()
+{
 }
 
 
@@ -25,5 +27,4 @@ void Losfahren::vBearbeiten()
 	cout << wayException << endl;
 
 	wayException.vAnnahme(wayException.pAbgabe(fzgException));
-
 }

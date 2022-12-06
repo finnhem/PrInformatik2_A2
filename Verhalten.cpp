@@ -15,11 +15,12 @@ Verhalten::Verhalten(Weg& weg) : currentWay(weg)
 }
 
 
-Verhalten::~Verhalten() {
+Verhalten::~Verhalten()
+{
 }
 
 
-
+//Jetzt in Unterklassen
 double Verhalten::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
 {/*
 	double dMoeglich = aFzg.dGeschwindigkeit()*dZeitIntervall;

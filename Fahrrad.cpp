@@ -27,14 +27,15 @@ Fahrrad::Fahrrad(const string sName, const double dVMax) :
 
 double Fahrrad::dGeschwindigkeit() const
 {
-	if (p_dGesamtStrecke < 20) {
-		return p_dMaxGeschwindigkeit;
+	if (p_dGesamtStrecke-20 < 0.1) {
+		return p_dMaxGeschwindigkeit;	//Unter 20km Vmax
 	}
 	else
 	{
+		//Danach 10% langsamer pro 20km
 		double dV = pow(0.9, (int)p_dGesamtStrecke/20) * p_dMaxGeschwindigkeit;
 
-		if (dV < 12)
+		if (dV < 12)		//aber min 12km/h
 		{
 			return 12;
 		}
@@ -60,6 +61,7 @@ void Fahrrad::vAusgeben(ostream& o) const
 }
 
 
+//Graphische Ausgabe Fahrrad SimuClient
 void Fahrrad::vZeichnen(const Weg& weg) const
 {
 	double abschnitt = this->getAbschnittStrecke();

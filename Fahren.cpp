@@ -10,28 +10,27 @@
 
 Fahren::Fahren(Weg& weg) : Verhalten(weg)
 {
-	// TODO Auto-generated constructor stub
-
 }
+
 
 Fahren::~Fahren()
 {
-	// TODO Auto-generated destructor stub
 }
 
 
+//Returns gefahrene Strecke
 double Fahren::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
 {
-	double dMoeglich = aFzg.dGeschwindigkeit()*dZeitIntervall;
+	double dMoeglich = aFzg.dGeschwindigkeit()*dZeitIntervall;	//Moegliche Strecke
 
-	//Weg ist laenger als Strecke im Zeitintervall
+	//Weg ist laenger als moegliche Strecke im Zeitintervall
 	if(aFzg.getAbschnittStrecke() + dMoeglich < currentWay.getLaenge())
 	{
 		return dMoeglich;
 	} else if (aFzg.getAbschnittStrecke()==this->currentWay.getLaenge()){
 
 		cout << "Fahrzeug #" << aFzg.getID() << " bereits am Weg ende." << endl;
-		throw Streckenende(aFzg, currentWay);
+		throw Streckenende(aFzg, currentWay);	//Throw Exception
 		return 0;
 	}
 	//sonst Reststrecke

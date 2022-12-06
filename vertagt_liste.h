@@ -32,6 +32,8 @@ namespace vertagt
 			p_objekte.clear();
 		}
 
+
+		//Ausgabefunktion der vListe
 		void vlAusgeben()
 		{
 			cout << endl;
@@ -41,11 +43,14 @@ namespace vertagt
 			}
 		}
 
+
+		//leert die Fahrzeugliste
 		void clear()
 		{
 			vAktualisieren();
 			p_objekte.clear();
 		}
+
 
 		// Lesefunktionen
 		const_iterator begin() const
@@ -69,29 +74,29 @@ namespace vertagt
 			return p_objekte.empty();		//list size == 0?
 		}
 
+
 		// Schreibfunktionen
 		void push_back(T obj)
 		{
-			// Aktionselement für PushBack auf Liste erzeugen
-			//p_aktionen.push_back(std::make_unique<VPushBack<T>>(p_objekte, std::move(obj)));
-			//std::unique_ptr<VPushBack<T>> VPB_Aktionselement = std::make_unique<VPushBack<T>>(p_objekte, std::move(obj));
+			//Aktionselement für PushBack auf Liste erzeugen
 			p_aktionen.push_back(std::make_unique<VPushBack<T>>(p_objekte, std::move(obj)));
 
 		}
 
 		void push_front(T obj)
 		{
-			// Aktionselement für PushBack auf Liste erzeugen
-			//std::unique_ptr<VPushFront<T>> VPF_Aktionselement = std::make_unique<VPushFront<T>>(p_objekte, std::move(obj));
+			//Aktionselement für PushFront auf Liste erzeugen
 			p_aktionen.push_front(std::make_unique<VPushFront<T>>(p_objekte, std::move(obj)));
 		}
 
+
 		void erase(iterator it)
 		{
-			// Aktionselement für PushBack auf Liste erzeugen (hier Iterator statt Objekt !)
+			// Aktionselement für Erase auf Liste erzeugen (hier Iterator statt Objekt !)
 			p_aktionen.push_back(std::make_unique<VErase<T>>(p_objekte, it));
 			//Erst zu spaeterem Zeitpunkt in vAktualisieren erase anwenden
 		}
+
 
 		// Aenderungen auf Objektliste uebertragen
 		void vAktualisieren()
@@ -104,7 +109,6 @@ namespace vertagt
 			}
 			// Aktionsliste löschen
 			p_aktionen.clear();
-
 		}
 	};
 } // namespace vertagt

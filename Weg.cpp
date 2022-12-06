@@ -13,15 +13,18 @@ Weg::Weg() : Simulationsobjekt(), p_dLaenge(0.0), p_eTempolimit(autobahn)
 {
 }
 
+
 Weg::Weg(string sName, double dLaenge, Tempolimit tempolimit) :
 		Simulationsobjekt(sName), p_dLaenge(dLaenge), p_eTempolimit(tempolimit)
 {
-
 }
 
-Weg::~Weg() {
+
+Weg::~Weg()
+{
 	cout << "Weg #" << this->p_iID << " mit dem Namen " << this->p_sName << " wurde dekonstruiert." << endl;
 }
+
 
 double Weg::getTempolimit()
 {
@@ -29,20 +32,21 @@ double Weg::getTempolimit()
 }
 
 
+//Simuliert alle Fahrzeuge auf dem Weg
 void Weg::vSimulieren()
 {
-	p_pFahrzeuge.vAktualisieren();
-	for (auto &listElement : p_pFahrzeuge)
+	p_pFahrzeuge.vAktualisieren();			//vertagte Liste aktualisieren
+	for (auto &listElement : p_pFahrzeuge)	//range based for loop
 	{
 		try {
 			listElement->vSimulieren();
 			listElement->vZeichnen(*this);
 		}
 		catch (Fahrausnahme& exception){
-			exception.vBearbeiten();
+			exception.vBearbeiten();		//Aufruf von vBearbeiten(); Losfahren/Parken
 		}
 	}
-	p_pFahrzeuge.vAktualisieren();
+	p_pFahrzeuge.vAktualisieren();			//erneut aktualisieren
 }
 
 
@@ -99,24 +103,24 @@ double Weg::getLaenge() const
 }
 
 
+//Fahrzeug kann neuen Weg direkt befahren
 void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg)
 {
 	//Signal an pFzg neue Strecke
 	pFzg->vNeueStrecke(*this);
 
 	//Fahrzeug zur Liste hinzufuegen
-	p_pFahrzeuge.push_back(move(pFzg));
-
+	p_pFahrzeuge.push_back(move(pFzg));		//Fahrende Fahrzeuge hinten
 }
 
 
+//Fahrzeug muss Parken bis dStartzeit
 void Weg::vAnnahme(unique_ptr<Fahrzeug> pFzg, double dStartzeit)
 {
 	pFzg->vNeueStrecke(*this, dStartzeit);
 
-	p_pFahrzeuge.push_front(move(pFzg));
+	p_pFahrzeuge.push_front(move(pFzg));	//Parkende Fahrzeuge vorne
 }
-
 
 
 string Weg::getName() const
@@ -125,10 +129,12 @@ string Weg::getName() const
 }
 
 
+//Loescht Fahrzeug von Fahrzeugliste des Weges und gibt es zurueck
 unique_ptr<Fahrzeug> Weg::pAbgabe(const Fahrzeug& aFzg)
 {
 	unique_ptr<Fahrzeug> pLocalPtr;
 
+	//Sucht nach aFzg auf dem Weg
 	for (auto it = p_pFahrzeuge.begin(); it != p_pFahrzeuge.end(); ++it)
 	{
 		if (*it != nullptr)

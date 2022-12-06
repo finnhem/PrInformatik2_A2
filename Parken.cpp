@@ -12,13 +12,11 @@
 
 Parken::Parken(Weg& weg, double startzeit) : Verhalten(weg), p_dStartzeit(startzeit)
 {
-	// TODO Auto-generated constructor stub
-
 }
+
 
 Parken::~Parken()
 {
-	// TODO Auto-generated destructor stub
 }
 
 
@@ -34,7 +32,7 @@ double Parken::dStrecke(Fahrzeug &aFzg, double startzeit)
 	{
 		return 0.0;
 	} else {
-		throw Losfahren(aFzg, currentWay);
+		throw Losfahren(aFzg, currentWay);		//Ende von Parken erreicht
 	}
 	cout << "Startzeit wurde erreicht." << endl;
 

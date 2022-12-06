@@ -3,6 +3,7 @@
  *
  *  Created on: 15.11.2022
  *      Author: root
+ *      Oberklasse von Losfahren und Streckenende
  */
 
 #ifndef FAHRAUSNAHME_H_

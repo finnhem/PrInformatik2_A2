@@ -11,13 +11,11 @@
 
 PKW::PKW() : Fahrzeug()
 {
-
 }
 
 
 PKW::PKW(const string sName) : Fahrzeug(sName)
 {
-
 }
 
 
@@ -27,12 +25,14 @@ PKW::PKW(const string sName, const double dVMax, const double dVerbrauch, const 
 {
 }
 
+
 double PKW::dTanken() {
 	double dGetankt = p_dTankvolumen - p_dTankinhalt;
 	p_dTankinhalt = p_dTankvolumen;
 
 	return dGetankt;
 }
+
 
 double PKW::dTanken(double dMenge)
 {
@@ -53,6 +53,7 @@ double PKW::dTanken(double dMenge)
 
 void PKW::vSimulieren()
 {
+	//PKW speziefisch Tank simulieren
 	if (p_dTankinhalt > 0)
 	{
 		double dVerbrauch = p_dVerbrauch/100 *
@@ -72,8 +73,6 @@ void PKW::vSimulieren()
 				<< " ist leer, und muss getankt werden." << endl;
 	}
 	*/
-
-
 }
 
 
@@ -91,6 +90,7 @@ void PKW::vAusgeben(ostream& o) const
 }
 
 
+//Gibt Tempolimit zurueck
 double PKW::dGeschwindigkeit() const
 {
 	double dVLimit = p_pVerhalten->getWeg().getTempolimit();
@@ -106,6 +106,7 @@ void PKW::operator=(const PKW& pkw)
 }
 
 
+//Vorgabe Datei SimuClient
 void PKW::vZeichnen(const Weg& weg) const
 {
 	double abschnitt = this->getAbschnittStrecke();

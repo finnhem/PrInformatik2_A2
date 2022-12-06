@@ -29,14 +29,15 @@ using namespace std;
 double dGlobaleZeit;
 
 
+//Statische und Dynamische Deklaration
 void vAufgabe_1()
 {
-	static Fahrzeug auto1("AMG");
-	Fahrzeug* auto2 = new Fahrzeug;
+	Fahrzeug auto1("AMG");				//statisch
+	Fahrzeug* auto2 = new Fahrzeug;		//dynamisch stack
 
 	delete auto2;
 
-	static Fahrzeug auto3("BMW");
+	Fahrzeug auto3("BMW");
 
 	unique_ptr<Fahrzeug> upAuto1 = make_unique<Fahrzeug>("urus");
 	unique_ptr<Fahrzeug> upAuto2 = make_unique<Fahrzeug>("urus2");
@@ -74,6 +75,8 @@ void vAufgabe_1()
 	static Fahrzeug auto7("Test", -300);
 }
 
+
+//Simulationstest Fahrzeug
 void vAufgabe_1a()
 {
 	unique_ptr<Fahrzeug> a1aAuto1 = make_unique<Fahrzeug>("Audi", 230);
@@ -98,6 +101,7 @@ void vAufgabe_1a()
 }
 
 
+//Ausgaben Test
 void test()
 {
 	cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
@@ -141,10 +145,11 @@ void test()
 }
 
 
-
+//Einlesen von Daten
 void vAufgabe_2()
 {
 	//Warum sollten sie keine Fahrzeugobjekte speichern?
+	//Oberklasse
 
 	//Warum können sie PKWs und Fahrräder in einen Vektor speichern?
 	//Weil sie beide Unterklassen von Fahrzeug sind
@@ -217,6 +222,7 @@ void vAufgabe_2()
 }
 
 
+//eTest
 void vAufgabe_Probe() {
     Fahrzeug* pF1 = new PKW("Audi", 150, 8);
     dGlobaleZeit = 0.0;
@@ -231,6 +237,7 @@ void vAufgabe_Probe() {
 }
 
 
+//Fahrrad und PKW in einem vector und <operator und =operator
 void vAufgabe_3()
 {
 
@@ -321,6 +328,7 @@ void vAufgabe_4()
 }
 
 
+//Test Weg
 void vAufgabe_5()
 {
 	//Weg
@@ -341,6 +349,7 @@ void vAufgabe_5()
 }
 
 
+//Test Grafik
 void vAufgabe_6()
 {
 	bInitialisiereGrafik(800, 500);		//Ausgabefenster
@@ -371,7 +380,7 @@ void vAufgabe_6()
 }
 
 
-
+//test Vertagte Liste
 void vAufgabe_6a()
 {
 	static std::mt19937 device(0);
@@ -467,10 +476,8 @@ int main()
 	//vAufgabe_3();
 
 	//vAufgabe_4();
-//////////////////////////////////////////////////////////////////////////////////
-	//Schlecht implementiert
+
 	//vAufgabe_5();
-//////////////////////////////////////////////////////////////////////////////////
 
 	vAufgabe_6();
 

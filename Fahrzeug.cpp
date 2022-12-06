@@ -24,6 +24,7 @@ Fahrzeug::Fahrzeug(const string sName) :
 			<< p_sName << " wurde konstruiert." << endl;
 }
 
+
 Fahrzeug::Fahrzeug(const string sName, const double dMaxV) :
 		Simulationsobjekt(sName),
 		p_dMaxGeschwindigkeit((dMaxV >0) ? dMaxV : abs(dMaxV))
@@ -34,9 +35,11 @@ Fahrzeug::Fahrzeug(const string sName, const double dMaxV) :
 			<< p_dMaxGeschwindigkeit << " wurde konstruiert." << endl;
 }
 
+
 Fahrzeug::~Fahrzeug()
 {
 }
+
 
 void Fahrzeug::vKopf()
 {
@@ -69,6 +72,7 @@ void Fahrzeug::vKopf()
 	cout << setw(100) << "-------------------------------------------------------------------------------------------------------------------------------------------"<< endl;
 }
 
+
 void Fahrzeug::vAusgeben(ostream& o) const
 {
 	Simulationsobjekt::vAusgeben(o);
@@ -84,6 +88,7 @@ void Fahrzeug::vAusgeben(ostream& o) const
 	//o << endl;
 }
 
+
 void Fahrzeug::vSimulieren()
 {
 	if (fabs(p_dZeit - dGlobaleZeit) > 0.1 || p_dZeit == 0)	//Nur einmal simuliert pro Zeitschritt
@@ -98,20 +103,24 @@ void Fahrzeug::vSimulieren()
 	}
 }
 
+
 double Fahrzeug::dTanken()
 {
 	return 0;
 }
+
 
 double Fahrzeug::dTanken(double dMenge)
 {
 	return 0;
 }
 
+
 double Fahrzeug::dGeschwindigkeit() const
 {
 	return p_dMaxGeschwindigkeit;
 }
+
 
 int Fahrzeug::getID()
 {
@@ -140,6 +149,8 @@ void Fahrzeug::operator =(const Fahrzeug& fahrzeug)
 }
 
 
+//fuegt Fahrzeug neues Verhalten auf neuem Weg hinzu
+//Fahren
 void Fahrzeug::vNeueStrecke(Weg& weg)
 {
 	p_pVerhalten = make_unique<Fahren>(weg);
@@ -147,6 +158,7 @@ void Fahrzeug::vNeueStrecke(Weg& weg)
 }
 
 
+//Parken
 void Fahrzeug::vNeueStrecke(Weg& weg, double dStartzeit)
 {
 	p_pVerhalten = make_unique<Parken>(weg, dStartzeit);
@@ -154,6 +166,7 @@ void Fahrzeug::vNeueStrecke(Weg& weg, double dStartzeit)
 }
 
 
+//Zurueckgelegter Teil des Weges
 double Fahrzeug::getAbschnittStrecke() const
 {
 	return p_dAbschnittStrecke;

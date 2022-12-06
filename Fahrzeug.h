@@ -49,7 +49,8 @@ protected:
 	double p_dMaxGeschwindigkeit = 0;
 	double p_dGesamtStrecke = 0;
 	double p_dGesamtFahrZeit = 0;
-	unique_ptr<Verhalten> p_pVerhalten = nullptr;
+	unique_ptr<Verhalten> p_pVerhalten = nullptr; //Verhalten Fahren Parken und nur bis
+												  //Streckenende fahren
 
 private:
 	double p_dAbschnittStrecke = 0.0;
