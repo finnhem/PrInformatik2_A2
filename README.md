@@ -1,1 +1,3 @@
-# PrInformatik2_A2
+# PrInformatik2_A2 RWTH Aachen
+## Description
+It's about modeling and simulating traffic on a poorly developed road network. Various types of vehicles are sent from a node at an individual starting time. The model consists of three different simulation objects: vehicles, roads, and intersections. The simulation steps are carried out sequentially by all simulation objects, controlled by a global clock. Some roads in the simulation system have partial overtaking bans and speed limits. A class structure and supporting classes are presented that should be used in the implementation. Tasks are given for implementing the simulation.
